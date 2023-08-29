@@ -16,33 +16,126 @@
         </style>
         <style>
 
+            #holder{
+                display: flex;
+                flex-flow: wrap;
+            }
+
             #welcomeText{
+                width: 100%;
                 font-weight: 700;
                 font-size: 32px;
             }
 
-            #updates-panel{
+            .updates-panel-title-holder{
+                font-size: 26px;
+                font-weight: bold;
+            }
+
+            .updates-panel{
                 background-color: #fbfbff;
                 border: 1px solid black;
                 border-radius: 5px;
                 display: flex;
+                flex-direction: column;
                 padding: 15px;
-                height: 100px;
-                width: 200px;
+                height: 400px;
+                width: 50%;
+                overflow-y: scroll;
             }
 
         </style>
     </head>
     <body class="antialiased">
         <!-- <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white"> -->
-        <div class="background-">
+        <div id="holder">
             <h1 id="welcomeText">Welcome User</h1>
-            <div id="updates-panel">
-                <div id="updates-panel-title-holder">
-                    <h2>Updates/Notification</h2>
+            <div class="updates-panel">
+                <div class="updates-panel-title-holder">
+                    <h2>Follower Updates</h2>
                 </div>
                 <div id="updates-panel-data-logs">
                     <!-- Setup a loop through the list of table events -->
+                    @foreach ($Followers as $follower)
+                        <p>RandomUser {{$follower->name}} followed you!</p>
+                        
+                        @if (!$donation->read)
+                            <form method="post" action="{{ route('markAsRead') }}">
+                                {{ csrf_field() }}>
+                                <button type="submit">Mark As Read</button>
+                            </form>
+                        @endif
+                    @endforeach
+
+
+                    <form method="post" action="{{ route('saveItem') }}" accept-charset="">
+                        {{ csrf_field() }}
+                        <button type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+            <div class="updates-panel">
+                <div class="updates-panel-title-holder">
+                    <h2>Subscribers</h2>
+                </div>
+                <div id="updates-panel-data-logs">
+                    <!-- Setup a loop through the list of table events -->
+                    @foreach ($Subscribers as $sub)
+                        <p>RandomUser {{$sub->name}} Tier ({{$sub->subscriptionTier}}) subscribed to you!</p>
+                        @if (!$sub->read)
+                            <button>Mark As Read</button>
+                        @endif
+                    @endforeach
+
+
+                    <form method="post" action="{{ route('saveItem') }}" accept-charset="">
+                        {{ csrf_field() }}
+                        <button type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+            <div class="updates-panel">
+                <div class="updates-panel-title-holder">
+                    <h2>Donations</h2>
+                </div>
+                <div id="updates-panel-data-logs">
+                    <!-- Setup a loop through the list of table events -->
+                    @foreach ($Donations as $donation)
+                        <p>RandomUser donated {{$donation->amount}}{{$donation->currency}} to you!</p>
+                        <p>{{$donation->donationMessage}}</p>
+                        @if (!$donation->read)
+                            <form method="post" action="{{ route('markAsRead') }}">
+                                {{ csrf_field() }}>
+                                <button type="submit">Mark As Read</button>
+                            </form>
+                        @endif
+                    @endforeach
+
+
+                    <form method="post" action="{{ route('saveItem') }}" accept-charset="">
+                        {{ csrf_field() }}
+                        <button type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+            <div class="updates-panel">
+                <div class="updates-panel-title-holder">
+                    <h2>Merch Sales</h2>
+                </div>
+                <div id="updates-panel-data-logs">
+                    <!-- Setup a loop through the list of table events -->
+                    @foreach ($MerchSales as $msale)
+                        <p>RandomUser bought {{$msale->itemName}} for {{$msale->price}}</p>
+                        @if (!$msale->read)
+                            <button>Mark As Read</button>
+                        @endif
+                    @endforeach
+
+
+                    <form method="post" action="{{ route('saveItem') }}" accept-charset="">
+                        {{ csrf_field() }}
+                        <button type="submit">Save</button>
+                    </form>
                 </div>
             </div>
         </div>

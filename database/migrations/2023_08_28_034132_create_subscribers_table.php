@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->integer("subscriptionTier");
+            $table->boolean("read")->default(false);
             $table->timestamps();
         });
     }

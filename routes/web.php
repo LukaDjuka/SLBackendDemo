@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\MarkAsReadController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SLController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [SLController::class, "getSLInfo"]);
+
+Route::post('/saveItemRoute', [SLController::class, "saveItem"])->name("saveItem"); 
+
+Route::post('/markAsReadRoute', [MarkAsReadController::class, "markAsRead"])->name("markAsRead"); 
