@@ -17,6 +17,6 @@ use App\Http\Controllers\SLController;
 
 Route::get('/', [SLController::class, "getSLInfo"]);
 
-Route::post('/saveItemRoute', [SLController::class, "saveItem"])->name("saveItem"); 
+Route::post('/resetRoute', [SLController::class, "reset"])->name("reset"); 
 
 Route::post('/markAsReadRoute', [MarkAsReadController::class, "markAsRead"])->name("markAsRead"); 

@@ -59,19 +59,14 @@
                     @foreach ($Followers as $follower)
                         <p>RandomUser {{$follower->name}} followed you!</p>
                         
-                        @if (!$donation->read)
+                        @if (!$follower->read)
                             <form method="post" action="{{ route('markAsRead') }}">
                                 {{ csrf_field() }}>
+                                <input type="hidden" name="followerId" value="{{ $follower->id }}">
                                 <button type="submit">Mark As Read</button>
                             </form>
                         @endif
                     @endforeach
-
-
-                    <form method="post" action="{{ route('saveItem') }}" accept-charset="">
-                        {{ csrf_field() }}
-                        <button type="submit">Save</button>
-                    </form>
                 </div>
             </div>
             <div class="updates-panel">
@@ -83,15 +78,13 @@
                     @foreach ($Subscribers as $sub)
                         <p>RandomUser {{$sub->name}} Tier ({{$sub->subscriptionTier}}) subscribed to you!</p>
                         @if (!$sub->read)
-                            <button>Mark As Read</button>
+                            <form method="post" action="{{ route('markAsRead') }}">
+                                {{ csrf_field() }}>
+                                <input type="hidden" name="subscriberId" value="{{ $sub->id }}">
+                                <button type="submit">Mark As Read</button>
+                            </form>
                         @endif
                     @endforeach
-
-
-                    <form method="post" action="{{ route('saveItem') }}" accept-charset="">
-                        {{ csrf_field() }}
-                        <button type="submit">Save</button>
-                    </form>
                 </div>
             </div>
             <div class="updates-panel">
@@ -106,16 +99,11 @@
                         @if (!$donation->read)
                             <form method="post" action="{{ route('markAsRead') }}">
                                 {{ csrf_field() }}>
+                                <input type="hidden" name="donationId" value="{{ $donation->id }}">
                                 <button type="submit">Mark As Read</button>
                             </form>
                         @endif
                     @endforeach
-
-
-                    <form method="post" action="{{ route('saveItem') }}" accept-charset="">
-                        {{ csrf_field() }}
-                        <button type="submit">Save</button>
-                    </form>
                 </div>
             </div>
             <div class="updates-panel">
@@ -127,17 +115,21 @@
                     @foreach ($MerchSales as $msale)
                         <p>RandomUser bought {{$msale->itemName}} for {{$msale->price}}</p>
                         @if (!$msale->read)
-                            <button>Mark As Read</button>
+                            <form method="post" action="{{ route('markAsRead') }}">
+                                {{ csrf_field() }}>
+                                <input type="hidden" name="merchId" value="{{ $msale->id }}">
+                                <button type="submit">Mark As Read</button>
+                            </form>
                         @endif
                     @endforeach
-
-
-                    <form method="post" action="{{ route('saveItem') }}" accept-charset="">
-                        {{ csrf_field() }}
-                        <button type="submit">Save</button>
-                    </form>
                 </div>
             </div>
+
+
+            <form method="post" action="{{ route('reset') }}" accept-charset="">
+                {{ csrf_field() }}
+                <button type="submit">RESET</button>
+            </form>
         </div>
     </body>
 </html>

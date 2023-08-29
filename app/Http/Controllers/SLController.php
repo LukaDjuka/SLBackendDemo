@@ -16,7 +16,7 @@ class SLController extends Controller
         return view('welcome', ["Donations" => Donations::all(), "Followers" => Followers::all(), "MerchSales" => MerchSales::all(), "Subscribers" => Subscribers::all()]);
     }
 
-    public function saveItem(Request $request){
+    public function reset(Request $request){
         Log::info(json_encode(($request->all())));
         Donations::generateRandomDonations();
         Followers::generateRandomFollowers();

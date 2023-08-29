@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('donations', function (Blueprint $table) {
             $table->id();
-            $table->integer("amount");
-            $table->string("currency");
-            $table->string("donationMessage");
+            $table->integer("amount")->default(0);;
+            $table->string("currency")->default("USD");;
+            $table->string("donationMessage")->default("");;
             $table->boolean("read")->default(false);
             $table->timestamps();
         });

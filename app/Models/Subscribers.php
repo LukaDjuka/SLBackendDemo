@@ -11,7 +11,6 @@ class Subscribers extends Model
 
     public $name;
     public $subscriptionTier;
-    public $donationMessage;
     public $read;
     public $created_at;
     public $updated_at;
@@ -29,7 +28,7 @@ class Subscribers extends Model
             $sub->name =  substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 5);
 
             // Generate random tier
-            $sub->amount = (rand(1, 3));
+            $sub->subscriptionTier = (rand(1, 3));
             
             // Generate random timestamp within the last 3 months
             $timestamp = time() - rand(0, 7776000); // 7776000 seconds = 3 months

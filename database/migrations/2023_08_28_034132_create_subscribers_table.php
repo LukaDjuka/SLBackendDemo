@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('subscribers', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->integer("subscriptionTier");
+            $table->string("name")->default("");;
+            $table->integer("subscriptionTier")->default(1);;
             $table->boolean("read")->default(false);
             $table->timestamps();
         });
