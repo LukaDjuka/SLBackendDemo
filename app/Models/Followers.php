@@ -14,7 +14,7 @@ class Followers extends Model
     public $created_at;
     public $updated_at;
 
-    static function generateRandomFollowers($count = 10) {
+    static function generateRandomFollowers($count = 300) {
         for ($i = 0; $i < $count; $i++) {
             $follower = new Followers();
             

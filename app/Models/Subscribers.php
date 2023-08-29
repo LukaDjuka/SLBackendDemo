@@ -15,12 +15,8 @@ class Subscribers extends Model
     public $created_at;
     public $updated_at;
 
-    // public function __construct($name, $subscriptionTier){
-    //     $this->name = $name;
-    //     $this->subscriptionTier = $subscriptionTier;
-    // }
 
-    static function generateRandomSubscribers($count = 10) {
+    static function generateRandomSubscribers($count = 300) {
         for ($i = 0; $i < $count; $i++) {
             $sub = new Subscribers();
             

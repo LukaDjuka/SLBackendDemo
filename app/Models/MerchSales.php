@@ -16,7 +16,7 @@ class MerchSales extends Model
     public $created_at;
     public $updated_at;
 
-    static function generateRandomMerchSales($count = 10) {
+    static function generateRandomMerchSales($count = 300) {
         for ($i = 0; $i < $count; $i++) {
             $merchsale = new MerchSales();
 

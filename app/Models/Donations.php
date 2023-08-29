@@ -19,7 +19,7 @@ class Donations extends Model
 
     protected $guarded = []; // Allow all properties to be mass assigned
 
-    static function generateRandomDonations($count = 10) {
+    static function generateRandomDonations($count = 300) {
         $donations = [];
         
         for ($i = 0; $i < $count; $i++) {
