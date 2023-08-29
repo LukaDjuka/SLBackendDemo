@@ -48,8 +48,8 @@ class Donations extends Model
                 
             // Log::info("Debug message: Amount={$donation->amount}, Currency={$donation->currency}, Message={$donation->donationMessage}, Timestamp={$donation->created_at}");
             // var_dump($donation);
-            $donations[] = $donation;
-            // $donation->save();
+            // $donations[] = $donation;
+            $donation->save();
 
         }
         

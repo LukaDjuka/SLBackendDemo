@@ -44,6 +44,11 @@
                 overflow-y: scroll;
             }
 
+            .markAsReadBtn{
+                background-color: lightblue;
+                border: 1px solid black;
+            }
+
         </style>
     </head>
     <body class="antialiased">
@@ -63,7 +68,7 @@
                             <form method="post" action="{{ route('markAsRead') }}">
                                 {{ csrf_field() }}>
                                 <input type="hidden" name="followerId" value="{{ $follower->id }}">
-                                <button type="submit">Mark As Read</button>
+                                <button class="markAsReadBtn" type="submit">Mark As Read</button>
                             </form>
                         @endif
                     @endforeach
@@ -81,7 +86,7 @@
                             <form method="post" action="{{ route('markAsRead') }}">
                                 {{ csrf_field() }}>
                                 <input type="hidden" name="subscriberId" value="{{ $sub->id }}">
-                                <button type="submit">Mark As Read</button>
+                                <button class="markAsReadBtn" type="submit">Mark As Read</button>
                             </form>
                         @endif
                     @endforeach
@@ -100,7 +105,7 @@
                             <form method="post" action="{{ route('markAsRead') }}">
                                 {{ csrf_field() }}>
                                 <input type="hidden" name="donationId" value="{{ $donation->id }}">
-                                <button type="submit">Mark As Read</button>
+                                <button class="markAsReadBtn" type="submit">Mark As Read</button>
                             </form>
                         @endif
                     @endforeach
@@ -118,7 +123,7 @@
                             <form method="post" action="{{ route('markAsRead') }}">
                                 {{ csrf_field() }}>
                                 <input type="hidden" name="merchId" value="{{ $msale->id }}">
-                                <button type="submit">Mark As Read</button>
+                                <button class="markAsReadBtn" type="submit">Mark As Read</button>
                             </form>
                         @endif
                     @endforeach
